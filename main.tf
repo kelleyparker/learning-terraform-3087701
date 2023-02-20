@@ -18,7 +18,6 @@ data "aws_vpc" default" {
   default = true
 }
 
-
 resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
@@ -47,7 +46,6 @@ resource "aws_security_group_rule" "blog_http_in" {
   security_group_id = aws_security_group.blog.id 
 }
 
-
 resource "aws_security_group_rule" "blog_https_in" {
   type        = "ingress"
   from_port   = 443
@@ -57,7 +55,6 @@ resource "aws_security_group_rule" "blog_https_in" {
 
   security_group_id = aws_security_group.blog.id 
 }
-
 
 resource "aws_security_group_rule" "blog_everything_out" {
   type        = "egress"
